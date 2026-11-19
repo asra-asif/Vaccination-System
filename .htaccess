@@ -1,0 +1,33 @@
+# ----------------------------------------------------------------------
+# Vaccination System - Apache Configuration for InfinityFree & Localhost
+# ----------------------------------------------------------------------
+
+# Disable directory indexing
+Options -Indexes
+
+# Set default character encoding
+AddDefaultCharset UTF-8
+
+# Protect sensitive database dumps, documentation, and config files
+<FilesMatch "\.(sql|log|ini|md)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Protect includes directory directly from HTTP requests
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^includes/ - [F,L]
+</IfModule>
+
+# Ensure PHP error handling conforms to environment
+<IfModule mod_php8.c>
+    php_flag display_errors Off
+    php_flag log_errors On
+</IfModule>
+

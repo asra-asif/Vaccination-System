@@ -1,0 +1,15 @@
+# Archives & temporary deployment files
+deploy_infinityfree.zip
+*.zip
+*.tar.gz
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE and editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
